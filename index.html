@@ -1,0 +1,101 @@
+<html>
+<head>
+  <title>me mata.</title>
+  <style>
+  * {
+    font-family: "Georgia", serif;
+  }
+  #title
+  {
+    font-size: 64px;
+    margin-top: 32px;
+    margin-bottom: 12px;
+  }
+  #desc
+  {
+    font-size: 16px;
+    margin-bottom: 48px;
+  }
+  #messages
+  {
+    resize: none;
+    width: 50%;
+    height: 25em;
+    font-size: 16px;
+    line-height: 200%;
+    padding-top: 16px;
+    padding-left: 24px;
+  }
+  #text
+  {
+    resize: none;
+    width: 55%;
+    height: 4em;
+    font-size: 24px;
+  }
+  #btn
+  {
+    padding: 6px 16px;
+    font-size: 32px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #6496c8;
+    text-shadow: -1px 1px #417cb8;
+  }
+  </style>
+</head>
+
+<body bgcolor="lightgray">
+  <div align="center">
+    <p id="title">site pra incomodar o lorenzo pq ele merece</p>
+    <p id="desc">pq eu me odeio ou algo do tipo</p>
+    <textarea id="messages" readonly="1"></textarea>
+    <h3 id="numClients">Pessoas q me odeiam: 0</h1>
+    <textarea id="text" placeholder="escreve qlqr merda aq" autofocus="1"></textarea>
+    <br>
+    <button id="btn" onclick="btnOnclick()">cu</button>
+  </div>
+</body>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+
+  function onNumClients(msg)
+  {
+    document.getElementById('numClients').innerHTML = 'Clients connected: ' + msg;
+  }
+
+  function onMessages(msg)
+  {
+    document.getElementById('messages').value = msg;
+  }
+
+  function onSynth(msg)
+  {
+    document.getElementById('messages').value += msg;
+  }
+
+  var socket = io();
+  socket.on('numClients', function(msg)
+  {
+    onNumClients(msg);
+  });
+
+  socket.on('messages', function(msg)
+  {
+    onMessages(msg);
+  });
+
+  socket.on('synth', function(msg)
+  {
+    onSynth(msg);
+  });
+
+  function btnOnclick()
+  {
+    socket.emit('send_synth', document.getElementById('text').value);
+  }
+
+</script>
+</html>
