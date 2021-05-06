@@ -1,1 +1,1 @@
-web: node cuzin
+web: node lameprogram
