@@ -105,9 +105,8 @@
     onSynth(msg);
   });
 
-  function btnOnclick();{
-    var textarea = document.getElementById('mensagens');
-textarea.scrollTop = textarea.scrollHeight;
+  function btnOnclick();
+  {
     socket.emit('send_synth', document.getElementById('text').value);
   }
 
