@@ -73,7 +73,7 @@
 
 <script src="/socket.io/socket.io.js"></script>
 <script>
-  
+
   function onNumClients(msg)
   {
     document.getElementById('numClients').innerHTML = 'Clients connected: ' + msg;
@@ -105,7 +105,7 @@
     onSynth(msg);
   });
 
-  function btnOnclick();
+  function btnOnclick()
   {
     socket.emit('send_synth', document.getElementById('text').value);
   }
