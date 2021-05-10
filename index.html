@@ -73,7 +73,9 @@
 
 <script src="/socket.io/socket.io.js"></script>
 <script>
-
+  var textarea = document.getElementById('messages');
+textarea.scrollTop = textarea.scrollHeight;
+  
   function onNumClients(msg)
   {
     document.getElementById('numClients').innerHTML = 'Clients connected: ' + msg;
