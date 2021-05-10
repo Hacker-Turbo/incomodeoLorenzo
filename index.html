@@ -73,8 +73,6 @@
 
 <script src="/socket.io/socket.io.js"></script>
 <script>
-  var textarea = document.getElementById('messages');
-textarea.scrollTop = textarea.scrollHeight;
   
   function onNumClients(msg)
   {
@@ -107,8 +105,9 @@ textarea.scrollTop = textarea.scrollHeight;
     onSynth(msg);
   });
 
-  function btnOnclick()
-  {
+  function btnOnclick();{
+    var textarea = document.getElementById('mensagens');
+textarea.scrollTop = textarea.scrollHeight;
     socket.emit('send_synth', document.getElementById('text').value);
   }
 
