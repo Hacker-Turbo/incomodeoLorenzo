@@ -25,7 +25,7 @@ io.on('connection', function(socket){
   {
     data = data + '\n';
     messages += data;
-    
+    console.logs();
     io.emit('synth', data);
   });
 });
